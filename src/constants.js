@@ -1,0 +1,1 @@
+export const COLLECTOIN_NAME='DAILY_NOTES'
