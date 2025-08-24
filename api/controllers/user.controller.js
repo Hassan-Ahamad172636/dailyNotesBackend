@@ -1,9 +1,9 @@
-import asyncHandler from "../utils/asyncHandler.js";
 import generateApiResponse from "../utils/generateApiResponse.js";
 import generateToken from "../utils/generateToken.js";
 import { User } from "../models/user.model.js";
 import bcrypt from "bcrypt"
 import crypto from "crypto"
+import asyncHandler from "../utils/asyncHandler.js";
 
 const userController = {
   signup: asyncHandler(async (req, res) => {

@@ -1,5 +1,5 @@
-import asyncHandler from '../utils/asynchandler.js';
 import Namaz from '../models/namaz.model.js';
+import asyncHandler from '../utils/asyncHandler.js';
 
 // Save namaz for today (create or update)
 export const saveNamaz = asyncHandler(async (req, res) => {
