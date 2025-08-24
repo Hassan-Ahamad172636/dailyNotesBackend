@@ -13,7 +13,7 @@ const userController = {
         return generateApiResponse(res, {
             statusCode: 400,
             success: false,
-            message:'All fields are required!'
+            message:'All fields are required'
         })
     }
 
