@@ -1,14 +1,14 @@
-// index.js
-import connectDB from './database/server.js'
+// api/index.js
 import app from './app.js';
+import connectDB from './database/server.js';
 
-// Connect to MongoDB
-connectDB().then(() => {
-    const PORT = process.env.PORT || 3000;
-    
-    app.listen(PORT, () => {
-      console.log(`Server running on port ${PORT}`);
-    });
-
-});
-
+// Vercel serverless handler
+export default async function handler(req, res) {
+  try {
+    await connectDB();   // ensure DB connected per-invocation (cached)
+    return app(req, res); // Express is a request handler (req, res)
+  } catch (err) {
+    console.error('Handler error:', err);
+    res.status(500).json({ success: false, message: 'Internal server error' });
+  }
+}
