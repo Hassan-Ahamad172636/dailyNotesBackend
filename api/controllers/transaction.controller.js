@@ -108,7 +108,7 @@ export const transactionController = {
 
   // Update transaction
   update: asyncHandler(async (req, res) => {
-    const user = req.user._id;  // ✅ token se user id
+    const { user } = req.params.id
 
     const { transactionId, transactionType, transactionTitle, transactionAmount, transactions, date, description } = req.body;
 
@@ -119,7 +119,7 @@ export const transactionController = {
 
     // ✅ findOneAndUpdate use karo, kyunki query object hai (user + transaction)
     const transaction = await Transaction.findOneAndUpdate(
-      { _id: transactionId, user: user }, // ✅ query object
+      user,
       {
         transactionType,
         transactionTitle,
